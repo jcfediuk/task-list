@@ -16,12 +16,15 @@ function App(): JSX.Element {
     e.preventDefault();
     addTask(newTask);
     setNewTask("");
+
     taskInput.current?.focus();
   };
 
   const addTask = (name: string): void => {
-    const newTasks = [...tasks, { name, done: false }];
-    setTasks(newTasks);
+    if (name.trim() !== "") {
+      const newTasks = [...tasks, { name, done: false }];
+      setTasks(newTasks);
+    }
   };
 
   const toggleDoneTask = (i: number): void => {
